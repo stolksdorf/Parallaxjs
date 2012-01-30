@@ -3,35 +3,35 @@ $(document).ready(function () {
 
 	
 	
-	parallex.add($("#page1"))
+	parallax.add($("#page1"))
 			.add("sexy", $("#page2"));
 		
 
-	parallex.page1.show();
+	parallax.page1.show();
 	
-	parallex.speed = 1200;
-	parallex.scaling = 0.4;
+	parallax.speed = 1200;
+	parallax.scaling = 0.4;
 		
-	parallex.last = parallex.sexy;
+	parallax.last = parallax.sexy;
 
-	parallex.background = $('body');
+	parallax.background = $('body');
 	
 	$("#left").click(function(){
-			parallex.last.right();
+			parallax.last.right();
 			
 			
 	});
 	
 	$("#right").click(function(){
-			parallex.last.left();
+			parallax.last.left();
 	});
 	
 	$("#top").click(function(){
-			parallex.last.top();
+			parallax.last.top();
 	});
 	
 	$("#bottom").click(function(){
-			parallex.last.bottom();
+			parallax.last.bottom();
 	});
 });
 
