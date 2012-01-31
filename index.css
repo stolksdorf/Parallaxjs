@@ -21,7 +21,7 @@ body{
 }
 
 .castle{
-	background-image: url(http://silviahartmann.com/background-tile-art/images/ancient-castle-wall-repeating-background.jpg);
+	background-image: url('castle.jpg');
 }
 
 .centerit{
