@@ -1,43 +1,43 @@
 window.onload = function(){
 	if (typeof jQuery === 'undefined') {  
-		alert("parallex.js requires jQuery.");
+		alert("parallax.js requires jQuery.");
 	} else {
-		var updateParallex = function(){
-			parallex.width = window.innerWidth;
-			parallex.height = window.innerHeight;
+		var updateparallax = function(){
+			parallax.width = window.innerWidth;
+			parallax.height = window.innerHeight;
 		}
-		updateParallex();
-		$(window).resize(function(){updateParallex();});
+		updateparallax();
+		$(window).resize(function(){updateparallax();});
 	}
 }
 
-var parallexPage = function(name, htmlObject){
+var parallaxPage = function(name, htmlObject){
 	return{
 		key: name,
 		page : htmlObject,
 		
-		right  : function(callback){return this.transition({left:parallex.width,top:0}  ,{left:-parallex.width,top:0} ,callback);},
-		left   : function(callback){return this.transition({left:-parallex.width,top:0} ,{left:parallex.width,top:0}  ,callback);},
-		top    : function(callback){return this.transition({left:0,top:-parallex.height},{left:0,top:parallex.height} ,callback);},
-		bottom : function(callback){return this.transition({left:0,top:parallex.height} ,{left:0,top:-parallex.height},callback);},
+		right  : function(callback){return this.transition({left:parallax.width,top:0}  ,{left:-parallax.width,top:0} ,callback);},
+		left   : function(callback){return this.transition({left:-parallax.width,top:0} ,{left:parallax.width,top:0}  ,callback);},
+		top    : function(callback){return this.transition({left:0,top:-parallax.height},{left:0,top:parallax.height} ,callback);},
+		bottom : function(callback){return this.transition({left:0,top:parallax.height} ,{left:0,top:-parallax.height},callback);},
 		
 		transition : function(locationNew, locationOld, callback){
-			if(!parallex.sliding){
-				parallex.sliding = true;
+			if(!parallax.sliding){
+				parallax.sliding = true;
 				var thisPage = this;
-				if(parallex.current !== this){
+				if(parallax.current !== this){
 					this.hide(locationNew);
 					this.slide({left:0,top:0}, function(){
 						thisPage.makeCurrent();
 						if(typeof callback === 'function'){ callback(); }
 					});
-					if(typeof parallex.current !== 'undefined'){
-						parallex.current.slide(
+					if(typeof parallax.current !== 'undefined'){
+						parallax.current.slide(
 							locationOld, 
-							function(){parallex.sliding = false;}
+							function(){parallax.sliding = false;}
 						);
 					}
-					parallex.slideBackground(locationNew);
+					parallax.slideBackground(locationNew);
 				}
 			}
 			return this;
@@ -45,13 +45,13 @@ var parallexPage = function(name, htmlObject){
 		
 		slide : function(css, callback){
 			this.page.css("display", "block");
-			this.page.stop().animate(css, parallex.speed, parallex.easing,
+			this.page.stop().animate(css, parallax.speed, parallax.easing,
 				function(){if(typeof callback === "function"){callback();}
 			});
 		},
 		
 		hide : function(newLocation){
-			newLocation = newLocation || {left:parallex.width,top:0}; //defaults left off screen
+			newLocation = newLocation || {left:parallax.width,top:0}; //defaults left off screen
 			this.page.css("display", "none");
 			this.page.css(newLocation);
 			return this;
@@ -59,8 +59,8 @@ var parallexPage = function(name, htmlObject){
 		
 		show : function(newLocation){
 			newLocation = newLocation || {left:0,top:0}; //defaults on screen
-			if(typeof parallex.current !== 'undefined'){
-				parallex.current.hide();
+			if(typeof parallax.current !== 'undefined'){
+				parallax.current.hide();
 			}
 			this.makeCurrent();
 			this.page.css("display", "block");
@@ -69,16 +69,16 @@ var parallexPage = function(name, htmlObject){
 		},
 		
 		makeCurrent : function(){
-			if(this === parallex.current){
+			if(this === parallax.current){
 				return true;
 			}else{
-				if(typeof parallex.current !== 'undefined'){
-					parallex.current.hide();
-					parallex.last = parallex.current;
+				if(typeof parallax.current !== 'undefined'){
+					parallax.current.hide();
+					parallax.last = parallax.current;
 				}
-				if(parallex.updateUrl === true){ this.updateUrl(); }
+				if(parallax.updateUrl === true){ this.updateUrl(); }
 				if(typeof this.onload === 'function'){ this.onload();}
-				parallex.current = this;
+				parallax.current = this;
 			}
 			return false;
 		},
@@ -94,8 +94,7 @@ var parallexPage = function(name, htmlObject){
 };
 
 
-var parallex = {
-	
+var parallax = {
 	speed : 800,
 	easing : 'swing',
 	sliding : false,
@@ -133,7 +132,7 @@ var parallex = {
 				}
 			}
 			if(validKeyName){
-				this[key] = parallexPage(key,object);
+				this[key] = parallaxPage(key,object);
 				this[key].hide();
 				this[key].page.css("position","absolute");
 			}
@@ -145,8 +144,8 @@ var parallex = {
 		var temp = document.URL.lastIndexOf("#")
 		if(temp !== -1){
 			pageName = document.URL.substring(temp + 1, document.URL.length);
-			if(parallex.hasOwnProperty(pageName)){
-				return parallex[pageName];
+			if(parallax.hasOwnProperty(pageName)){
+				return parallax[pageName];
 			}
 		}
 	},
@@ -154,17 +153,9 @@ var parallex = {
 	slideBackground : function(newLocation){
 		if(typeof this.background !== 'undefined' && typeof newLocation !== 'undefined'){
 			$(this.background).animate({
-				'background-position-x': '+=' + -newLocation.left * parallex.scaling + 'px',
-				'background-position-y': '+=' + -newLocation.top * parallex.scaling + 'px',
-				}, parallex.speed, parallex.easing);
+				'background-position-x': '+=' + -newLocation.left * parallax.scaling + 'px',
+				'background-position-y': '+=' + -newLocation.top * parallax.scaling + 'px',
+				}, parallax.speed, parallax.easing);
 		}
 	},
 };
-
-
-
-
-
-
-
-
