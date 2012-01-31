@@ -1,6 +1,6 @@
 window.onload = function(){
 	if (typeof jQuery === 'undefined') {  
-		alert("parallax.js requires jQuery.");
+		alert("ERROR: parallax.js requires jQuery.");
 	} else {
 		var updateparallax = function(){
 			parallax.width = window.innerWidth;
@@ -70,7 +70,7 @@ var parallaxPage = function(name, htmlObject){
 		
 		makeCurrent : function(){
 			if(this === parallax.current){
-				return true;
+				return false;
 			}else{
 				if(typeof parallax.current !== 'undefined'){
 					parallax.current.hide();
@@ -80,12 +80,12 @@ var parallaxPage = function(name, htmlObject){
 				if(typeof this.onload === 'function'){ this.onload();}
 				parallax.current = this;
 			}
-			return false;
+			return true;
 		},
 		
 		updateUrl : function(){
 			var url = document.URL;
-			url = (url.lastIndexOf("#") === -1)? url : url.substring(0, url.lastIndexOf("#")); //Strips off any anchors
+			url = (url.lastIndexOf("#") === -1)? url : url.substring(0, url.lastIndexOf("#"));
 			window.location.href = url + "#" + this.key;
 		},
 		
@@ -99,11 +99,10 @@ var parallax = {
 	speed : 800,
 	easing : 'swing',
 	sliding : false,
-	unusableNames : ["last", "current", "background"],  //Work on this
+	unusableNames : ["last", "current", "background","onload","updateUrl"],  //Work on this
 	scaling : 0.15,
 
 	add : function(key,object) {
-		//check the key
 		var check = true;
 		if(typeof key === 'object'){
 			try{
@@ -111,31 +110,34 @@ var parallax = {
 				key = key.attr('id');
 			} catch(err){
 				check = false;
-				alert("Page object lacks an id");
+				alert("ERROR:Page object lacks an id");
 			}
 		}else if(typeof key !== 'string'){
 			check = false;
-			alert("undefined key");
+			alert("ERROR:undefined key");
 		}
 		
-		//check the object
 		if(typeof object !== 'object'){
 			check = false;
-			alert("undefined page");
+			alert("ERROR:undefined page");
 		}
 		
 		if(check){
 			validKeyName = true;
-			for(propName in this){ //do a check for invalid keys
-				if(propName === key || $.inArray(propName, this.unusableNames) !== -1) {
-					alert("'"+propName+"' cannot be used as a page identifier");
+			for(propName in this){
+				if(propName === key) {
 					validKeyName = false;
 				}
+			}
+			if($.inArray(key, this.unusableNames) !== -1){
+				validKeyName = false;
 			}
 			if(validKeyName){
 				this[key] = parallaxPage(key,object);
 				this[key].hide();
 				this[key].page.css("position","absolute");
+			}else{
+				alert("ERROR:'"+key+"' cannot be used as a page identifier");
 			}
 		}
 		return this;
@@ -160,11 +162,3 @@ var parallax = {
 		}
 	},
 };
-
-
-
-
-
-
-
-
