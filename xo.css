@@ -3,7 +3,7 @@
 body,p,ul,ol,dl,textarea,input {font-family: 'LeagueGothic'; font-size:25px;}
 
 /* ----- FONTS ----- */
-@font-face { font-family: 'LeagueGothic';  src:url('fonts/LeagueGothic.otf'); }
+@font-face { font-family: 'LeagueGothic';  src:url('LeagueGothic.otf'); }
 @font-face { font-family: 'Chunk';         src:url('fonts/Chunk.otf'); }
 @font-face { font-family: 'Raleway';       src:url('fonts/Raleway.otf'); }
 @font-face { font-family: 'Sniglet';       src:url('fonts/Sniglet.otf'); }
