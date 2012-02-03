@@ -27,6 +27,8 @@ var parallaxPage = function(name, htmlObject){
 				var thisPage = this;
 				if(parallax.current !== this){
 					this.hide(locationNew);
+					if(typeof parallax.preload === 'function'){ parallax.preload(); }
+					if(typeof this.preload === 'function'){ this.preload(); }
 					this.slide({left:0,top:0}, function(){
 						thisPage.makeCurrent();
 						if(typeof callback === 'function'){ callback(); }
@@ -77,6 +79,7 @@ var parallaxPage = function(name, htmlObject){
 					parallax.last = parallax.current;
 				}
 				if(parallax.updateUrl === true){ this.updateUrl(); }
+				if(typeof parallax.onload == 'function'){ parallax.onload();}
 				if(typeof this.onload === 'function'){ this.onload();}
 				parallax.current = this;
 			}
@@ -99,7 +102,7 @@ var parallax = {
 	speed : 800,
 	easing : 'swing',
 	sliding : false,
-	unusableNames : ["last", "current", "background","onload","updateUrl"],  //Work on this
+	unusableNames : ["last", "current", "background","onload","updateUrl", "preload"],
 	scaling : 0.15,
 
 	add : function(key,object) {
