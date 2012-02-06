@@ -50,7 +50,7 @@ $(document).ready(function () {
 	
 	parallax.me.onload=function(){
 		setLeft("features", "Features");
-		setRight("index","Hone");
+		setRight("index","Home");
 	};
 	
 	
