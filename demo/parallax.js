@@ -92,7 +92,7 @@ var parallaxPage = function(name, htmlObject){
 			window.location.href = url + "#" + this.key;
 		},
 		
-		ackbar : function(){ alert(this.key + " thinks it's a trap!"); return this;},
+		ackbar : function(){ alert(this.key + " thinks it's a trap!"); return this;}
 	};
 };
 
