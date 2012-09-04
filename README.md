@@ -4,6 +4,9 @@ Parallax.js keeps pages in a structureless format, meaning you can absolutely co
 
 Check out the [demo page](http://stolksdorf.github.com/Parallaxjs)'s features section. It should explain everything you need to know to use Parallax.js. I strongly you suggest to take a dive into the demo page's code base as well, some nifty things in there.
 
+# I want to use Parallax.js for my project. What license is it under?
+I like to consider Parallax.js under the [WTFPL](http://sam.zoy.org/wtfpl/). In short, do whatever you like. Good luck on whatever you are working on and feel free to email me when it's done, I'd love to see your work.
+
 # Adding Pages
 Add accepts either a name and an element, or just an element. With the latter Parallax.js will try to use the element's Id as the name. Pages can be accessed using their name as a property on the Parallax.js object.
 
