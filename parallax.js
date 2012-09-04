@@ -103,7 +103,6 @@ var parallaxPage = function(name, pageHtml){
 	};
 };
 
-
 var parallax = {
 	speed : 800,
 	easing : 'swing',
