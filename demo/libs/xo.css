@@ -1,0 +1,354 @@
+/* ----- RESET ----- */
+*{outline: 0;padding: 0;margin: 0;border: 0;}
+body,p,ul,ol,dl,textarea,input {font-family: 'LeagueGothic'; font-size:25px;}
+
+/* ----- FONTS ----- */
+@font-face { font-family: 'LeagueGothic';  src:url('../assets/LeagueGothic.otf'); }
+@font-face { font-family: 'Chunk';         src:url('fonts/Chunk.otf'); }
+@font-face { font-family: 'Raleway';       src:url('fonts/Raleway.otf'); }
+@font-face { font-family: 'Sniglet';       src:url('fonts/Sniglet.otf'); }
+
+.leaguegothic{font-family:'LeagueGothic'; }
+.chunk       {font-family:'Chunk'; }
+.raleway     {font-family:'Raleway'; }
+.sniglet     {font-family:'Sniglet'; }
+.helvetica   {font-family:"Helvetica Neue", Helvetica,Arial, sans-serif;}
+.calibri     {font-family:Calibri;}
+.code        {font-family:"Courier New",Courier,monospace;}
+
+/* ----- BLUEPRINT ----- */
+  /* container_width/#divisions - margin */
+.xoblueprint {width:950px;margin:0 auto;overflow:auto;}
+.x1,.x2,.x3,.x4,.x5,.x6 {float:left;margin-right:10px;}
+.last {margin-right:0;clear:right;}
+.x1 {width:150px;}
+.x2 {width:310px;}
+.x3 {width:470px;}
+.x4 {width:630px;}
+.x5 {width:790px;}
+.x6, .full {width:950px;margin-right:0;}
+
+/* ----- TEXT ----- */
+.f0 {font-size:15px;}
+.f1 {font-size:25px;}
+.f2 {font-size:50px;}
+.f3 {font-size:100px;}
+.f4 {font-size:150px;}
+.f5 {font-size:200px;}
+
+/* add in line-height */
+.lh0 {line-height:0.75em;}
+.lh1 {line-height:1.0em;}
+.lh2 {line-height:1.25em;}
+
+.s1{letter-spacing:10px;}
+
+.txtshadow{ text-shadow: 1px 1px 3px #000;}
+
+.uppercase{text-transform:uppercase;}
+.lowercase{text-transform:lowercase;}
+
+.txtcenter{text-align:center;}
+.txtbottom{vertical-align:text-bottom;}
+.txtleft{text-align:left;}
+.txtright{text-align:right;}
+
+/* ----- DIV SPACING ----- */
+.wauto{width:auto;}
+.w1000{width:1000px;}
+.w960 {width:960px;}
+.w750 {width:750px;}
+.w500 {width:500px;}
+.w400 {width:400px;}
+.w300 {width:300px;}
+.w250 {width:250px;}
+.w200 {width:200px;}
+.w150 {width:150px;}
+.w100 {width:100px;}
+.w75  {width:75px;}
+.w50  {width:50px;}
+
+.pad      {padding:15 15 15 15;}
+.padtop   {padding-top:15;}
+.padbottom{padding-bottom:15;}
+.padleft  {padding-left:15;}
+.padright {padding-right:15;}
+
+.trim      {margin:15 15 15 15;}
+.trimtop   {margin-top:15;}
+.trimbottom{margin-bottom:15;}
+.trimleft  {margin-left:15;}
+.trimright {margin-right:15;}
+
+/* Full height? */
+
+/* ----- DIV POSITION ----- */
+.absolute{position:absolute;}
+.relative{position:relative;}
+
+.bottom{bottom:0px;}
+.top{top:0px;}
+
+.center{margin-left: auto;margin-right: auto;}
+.right {float:right;}
+.left  {float:left;}
+.clear{clear:both;}
+
+.zabove{z-index:10;}
+.znorm {z-index:auto;}
+.zbelow{z-index:-10;}
+
+/* ----- DIV DECORATION ----- */
+.clickable{cursor:pointer;}
+
+.show  {display:block;}
+.hide  {display:none;}
+.faded {opacity:0.4;}
+.opaque{opacity:1.0;}
+
+.rounded   {-moz-border-radius: 15px;border-radius: 15px;padding-left:10px;padding-right:10px;-moz-background-clip: padding; -webkit-background-clip: padding-box; background-clip: padding-box;}
+.shadow    { -moz-box-shadow: 0 0 5px 5px #888;-webkit-box-shadow: 0 0 5px 5px#888;box-shadow: 0 0 5px 5px #888;}
+.dropshadow{ -moz-box-shadow: 10px 10px 5px #888;-webkit-box-shadow: 10px 10px 5px #888;box-shadow: 10px 10px 5px #888;}
+
+
+.slant     { -webkit-transform: rotate(10deg);-moz-transform: rotate(10deg);-ms-transform: rotate(10deg);-o-transform: rotate(10deg);transform: rotate(10deg);zoom: 1;}
+.slantleft { -webkit-transform: rotate(-10deg);-moz-transform: rotate(-10deg);-ms-transform: rotate(-10deg);-o-transform: rotate(-10deg);transform: rotate(-10deg);zoom: 1;}
+.tilt     { -webkit-transform: rotate(25deg);-moz-transform: rotate(25deg);-ms-transform: rotate(25deg);-o-transform: rotate(25deg);transform: rotate(25deg);zoom: 1;}
+.tiltleft { -webkit-transform: rotate(-25deg);-moz-transform: rotate(-25deg);-ms-transform: rotate(-25deg);-o-transform: rotate(-25deg);transform: rotate(-25deg);zoom: 1;}
+.rotate90 { -webkit-transform: rotate(90deg);-moz-transform: rotate(90deg);-ms-transform: rotate(90deg);-o-transform: rotate(90deg);transform: rotate(90deg);zoom: 1;}
+.rotate270{ -webkit-transform: rotate(270deg);-moz-transform: rotate(270deg);-ms-transform: rotate(270deg);-o-transform: rotate(270deg);transform: rotate(270deg);zoom: 1;}
+
+.noise{background-image:url('images/noise.png');}
+.dust{background-image:url('images/dust.png');}
+.fabric{background-image:url('images/canvas.png');}
+.vignette{}
+/* look at https://gist.github.com/1387878*/
+
+/* ---- PAGE DECORATION ---- */
+.topbar   { top:0px;width:100%;position:fixed; z-index:100;}
+.bottombar{ width:100%;position:fixed;bottom:0px;}
+.header   { width:100%;position:relative;}
+.footer   { width:100%;clear:both;overflow:auto;}
+
+
+
+
+/* -- Extra stuff -- */
+
+/* -- work on this for a slight tilt left or right, 90 and flip -- */
+
+
+
+
+/* --- stuff to do ---
+- add pushing on blueprint
+- fixed clearing on blueprint
+- p, and h#
+- Forms
+- Buttons
+- Rotation
+- http://www.blueprintcss.org/tests/parts/elements.html
+- http://css3please.com/
+
+/* ----- stuff I took from blueprint ---- */
+.colborder {
+    border-right: 1px solid #DDDDDD;
+    margin-right: 25px;
+    padding-right: 24px;
+}
+
+hr {
+    background: none repeat scroll 0 0 #DDDDDD;
+    border: medium none;
+    clear: both;
+    color: #DDDDDD;
+    float: none;
+    height: 1px;
+    margin: 0 0 17px;
+    width: 100%;
+}
+
+.error, .alert {
+    background: none repeat scroll 0 0 #FBE3E4;
+    border-color: #FBC2C4;
+    color: #8A1F11;
+}
+
+.error, .alert, .notice, .success, .info {
+    border: 2px solid #DDDDDD;
+    margin-bottom: 1em;
+    padding: 0.8em;
+}
+
+
+/* ----- COLORS ----- */
+  /* -- Text -- */
+.yellow{color:#CCC400;}
+.orange{color:#CC6F00;}
+.red   {color:#CC0200;}
+.purple{color:#C300CC;}
+.blue  {color:#0100CC;}
+.cyan  {color:#00CBCC;}
+.green {color:#0BCC00;}
+.brown {color:#6E4437;}
+.grey  {color:#808080;}
+.white {color:white;}
+.black {color:black;}
+
+.lghtyellow{color:#FFF84C;}
+.lghtorange{color:#FFAD4C;}
+.lghtred   {color:#FF4E4C;}
+.lghtpurple{color:#F74CFF;}
+.lghtblue  {color:#4D4CFF;}
+.lghtcyan  {color:#4CFEFF;}
+.lghtgreen {color:#56FF4C;}
+.lghtbrown {color:#8F4E36;}
+.lghtgrey  {color:#C0C0C0;}
+
+.drkyellow{color:#7F7B00;}
+.drkorange{color:#7F4500;}
+.drkred   {color:#7F0100;}
+.drkpurple{color:#79007F;}
+.drkblue  {color:#01007F;}
+.drkcyan  {color:#007E7F;}
+.drkgreen {color:#077F00;}
+.drkbrown {color:#3D261F;}
+.drkgrey  {color:#404040;}
+
+  /* -- Backgrounds -- */
+.yellowbg{background-color:#CCC400;}
+.orangebg{background-color:#CC6F00;}
+.redbg   {background-color:#CC0200;}
+.purplebg{background-color:#C300CC;}
+.bluebg  {background-color:#0100CC;}
+.cyanbg  {background-color:#00CBCC;}
+.greenbg {background-color:#0BCC00;}
+.brownbg {background-color:#6E4437;}
+.greybg  {background-color:#808080;}
+.whitebg {background-color:white;}
+.blackbg {background-color:black;}
+
+.lghtyellowbg{background-color:#FFF84C;}
+.lghtorangebg{background-color:#FFAD4C;}
+.lghtredbg   {background-color:#FF4E4C;}
+.lghtpurplebg{background-color:#F74CFF;}
+.lghtbluebg  {background-color:#4D4CFF;}
+.lghtcyanbg  {background-color:#4CFEFF;}
+.lghtgreenbg {background-color:#56FF4C;}
+.lghtbrownbg {background-color:#8F4E36;}
+.lghtgreybg  {background-color:#C0C0C0;}
+
+.drkyellowbg{background-color:#7F7B00;}
+.drkorangebg{background-color:#7F4500;}
+.drkredbg   {background-color:#7F0100;}
+.drkpurplebg{background-color:#79007F;}
+.drkbluebg  {background-color:#01007F;}
+.drkcyanbg  {background-color:#007E7F;}
+.drkgreenbg {background-color:#077F00;}
+.drkbrownbg {background-color:#3D261F;}
+.drkgreybg  {background-color:#404040;}
+
+  /* -- Hovers -- */
+.yellowhvr:hover{color:#CCC400;}
+.orangehvr:hover{color:#CC6F00;}
+.redhvr:hover   {color:#CC0200;}
+.purplehvr:hover{color:#C300CC;}
+.bluehvr:hover  {color:#0100CC;}
+.cyanhvr:hover  {color:#00CBCC;}
+.greenhvr:hover {color:#0BCC00;}
+.brownhvr:hover {color:#6E4437;}
+.greyhvr:hover  {color:#808080;}
+.whitehvr:hover {color:white;}
+.blackhvr:hover {color:black;}
+
+.lghtyellowhvr:hover{color:#FFF84C;}
+.lghtorangehvr:hover{color:#FFAD4C;}
+.lghtredhvr:hover   {color:#FF4E4C;}
+.lghtpurplehvr:hover{color:#F74CFF;}
+.lghtbluehvr:hover  {color:#4D4CFF;}
+.lghtcyanhvr:hover  {color:#4CFEFF;}
+.lghtgreenhvr:hover {color:#56FF4C;}
+.lghtbrownhvr:hover {color:#8F4E36;}
+.lghtgreyhvr:hover  {color:#C0C0C0;}
+
+.drkyellowhvr:hover{color:#7F7B00;}
+.drkorangehvr:hover{color:#7F4500;}
+.drkredhvr:hover   {color:#7F0100;}
+.drkpurplehvr:hover{color:#79007F;}
+.drkbluehvr:hover  {color:#01007F;}
+.drkcyanhvr:hover  {color:#007E7F;}
+.drkgreenhvr:hover {color:#077F00;}
+.drkbrownhvr:hover {color:#3D261F;}
+.drkgreyhvr:hover  {color:#404040;}
+
+  /* -- Background Hover -- */
+.yellowbghvr:hover{background-color:#CCC400;}
+.orangebghvr:hover{background-color:#CC6F00;}
+.redbghvr:hover   {background-color:#CC0200;}
+.purplebghvr:hover{background-color:#C300CC;}
+.bluebghvr:hover  {background-color:#0100CC;}
+.cyanbghvr:hover  {background-color:#00CBCC;}
+.greenbghvr:hover {background-color:#0BCC00;}
+.brownbghvr:hover {background-color:#6E4437;}
+.greybghvr:hover  {background-color:#808080;}
+.whitebghvr:hover {background-color:white;}
+.blackbghvr:hover {background-color:black;}
+
+.lghtyellowbghvr:hover{background-color:#FFF84C;}
+.lghtorangebghvr:hover{background-color:#FFAD4C;}
+.lghtredbghvr:hover   {background-color:#FF4E4C;}
+.lghtpurplebghvr:hover{background-color:#F74CFF;}
+.lghtbluebghvr:hover  {background-color:#4D4CFF;}
+.lghtcyanbghvr:hover  {background-color:#4CFEFF;}
+.lghtgreenbghvr:hover {background-color:#56FF4C;}
+.lghtbrownbghvr:hover {background-color:#8F4E36;}
+.lghtgreybghvr:hover  {background-color:#C0C0C0;}
+
+.drkyellowbghvr:hover{background-color:#7F7B00;}
+.drkorangebghvr:hover{background-color:#7F4500;}
+.drkredbghvr:hover   {background-color:#7F0100;}
+.drkpurplebghvr:hover{background-color:#79007F;}
+.drkbluebghvr:hover  {background-color:#01007F;}
+.drkcyanbghvr:hover  {background-color:#007E7F;}
+.drkgreenbghvr:hover {background-color:#077F00;}
+.drkbrownbghvr:hover {background-color:#3D261F;}
+.drkgreybghvr:hover  {background-color:#404040;}
+
+
+  /* -- Borders -- */
+.yellowbdr{border-color:#CCC400;border-style:solid;border-width:5px;}
+.orangebdr{border-color:#CC6F00;border-style:solid;border-width:5px;}
+.redbdr   {border-color:#CC0200;border-style:solid;border-width:5px;}
+.purplebdr{border-color:#C300CC;border-style:solid;border-width:5px;}
+.bluebdr  {border-color:#0100CC;border-style:solid;border-width:5px;}
+.cyanbdr  {border-color:#00CBCC;border-style:solid;border-width:5px;}
+.greenbdr {border-color:#0BCC00;border-style:solid;border-width:5px;}
+.brownbdr {border-color:#6E4437;border-style:solid;border-width:5px;}
+.greybdr  {border-color:#808080;border-style:solid;border-width:5px;}
+.whitebdr {border-color:white;border-style:solid;border-width:5px;}
+
+.lghtyellowbdr{border-color:#FFF84C;border-style:solid;border-width:5px;}
+.lghtorangebdr{border-color:#FFAD4C;border-style:solid;border-width:5px;}
+.lghtredbdr   {border-color:#FF4E4C;border-style:solid;border-width:5px;}
+.lghtpurplebdr{border-color:#F74CFF;border-style:solid;border-width:5px;}
+.lghtbluebdr  {border-color:#4D4CFF;border-style:solid;border-width:5px;}
+.lghtcyanbdr  {border-color:#4CFEFF;border-style:solid;border-width:5px;}
+.lghtgreenbdr {border-color:#56FF4C;border-style:solid;border-width:5px;}
+.lghtbrownbdr {border-color:#8F4E36;border-style:solid;border-width:5px;}
+.lghtgreybdr  {border-color:#C0C0C0;border-style:solid;border-width:5px;}
+
+.drkyellowbdr{border-color:#7F7B00;border-style:solid;border-width:5px;}
+.drkorangebdr{border-color:#7F4500;border-style:solid;border-width:5px;}
+.drkredbdr   {border-color:#7F0100;border-style:solid;border-width:5px;}
+.drkpurplebdr{border-color:#79007F;border-style:solid;border-width:5px;}
+.drkbluebdr  {border-color:#01007F;border-style:solid;border-width:5px;}
+.drkcyanbdr  {border-color:#007E7F;border-style:solid;border-width:5px;}
+.drkgreenbdr {border-color:#077F00;border-style:solid;border-width:5px;}
+.drkbrownbdr {border-color:#3D261F;border-style:solid;border-width:5px;}
+.drkgreybdr  {border-color:#404040;border-style:solid;border-width:5px;}
+
+/* ----- BORDERS ----- */
+.border   {border-width:5px;border-style:solid;}
+.thinbdr  {border-width:1px;border-style:solid;}
+.thickbdr {border-width:10px;border-style:solid;}
+.dashed   {border-style:dashed;}
