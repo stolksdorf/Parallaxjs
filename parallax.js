@@ -1,5 +1,5 @@
 window.onload = function(){
-	if (typeof jQuery === 'undefined') {  
+	if (typeof jQuery === 'undefined') {
 		alert("ERROR: parallax.js requires jQuery.");
 	} else {
 		var updateparallax = function(){
@@ -11,32 +11,39 @@ window.onload = function(){
 	}
 }
 
-var parallaxPage = function(name, htmlObject){
+var parallaxPage = function(name, pageHtml){
 	return{
 		key: name,
-		page : htmlObject,
-		
+		page : pageHtml,
 		right  : function(callback){return this.transition({left:parallax.width,top:0}  ,{left:-parallax.width,top:0} ,callback);},
 		left   : function(callback){return this.transition({left:-parallax.width,top:0} ,{left:parallax.width,top:0}  ,callback);},
 		top    : function(callback){return this.transition({left:0,top:-parallax.height},{left:0,top:parallax.height} ,callback);},
 		bottom : function(callback){return this.transition({left:0,top:parallax.height} ,{left:0,top:-parallax.height},callback);},
-		
+
 		transition : function(locationNew, locationOld, callback){
 			if(!parallax.sliding){
 				parallax.sliding = true;
 				var thisPage = this;
 				if(parallax.current !== this){
 					this.hide(locationNew);
-					if(typeof parallax.preload === 'function'){ parallax.preload(); }
-					if(typeof this.preload === 'function'){ this.preload(); }
+					if(typeof parallax.preload === 'function'){
+						parallax.preload();
+					}
+					if(typeof this.preload === 'function'){
+						this.preload();
+					}
 					this.slide({left:0,top:0}, function(){
 						thisPage.makeCurrent();
-						if(typeof callback === 'function'){ callback(); }
+						if(typeof callback === 'function'){
+							callback();
+						}
 					});
 					if(typeof parallax.current !== 'undefined'){
 						parallax.current.slide(
-							locationOld, 
-							function(){parallax.sliding = false;}
+							locationOld,
+							function(){
+								parallax.sliding = false;
+							}
 						);
 					}
 					parallax.slideBackground(locationNew);
@@ -44,21 +51,21 @@ var parallaxPage = function(name, htmlObject){
 			}
 			return this;
 		},
-		
+
 		slide : function(css, callback){
 			this.page.css("display", "block");
 			this.page.stop().animate(css, parallax.speed, parallax.easing,
 				function(){if(typeof callback === "function"){callback();}
 			});
 		},
-		
+
 		hide : function(newLocation){
 			newLocation = newLocation || {left:parallax.width,top:0}; //defaults left off screen
 			this.page.css("display", "none");
 			this.page.css(newLocation);
 			return this;
 		},
-		
+
 		show : function(newLocation){
 			newLocation = newLocation || {left:0,top:0}; //defaults on screen
 			if(typeof parallax.current !== 'undefined'){
@@ -69,7 +76,7 @@ var parallaxPage = function(name, htmlObject){
 			this.page.css(newLocation);
 			return this;
 		},
-		
+
 		makeCurrent : function(){
 			if(this === parallax.current){
 				return false;
@@ -85,20 +92,19 @@ var parallaxPage = function(name, htmlObject){
 			}
 			return true;
 		},
-		
+
 		updateUrl : function(){
 			var url = document.URL;
 			url = (url.lastIndexOf("#") === -1)? url : url.substring(0, url.lastIndexOf("#"));
 			window.location.href = url + "#" + this.key;
 		},
-		
+
 		ackbar : function(){ alert(this.key + " thinks it's a trap!"); return this;},
 	};
 };
 
 
 var parallax = {
-	
 	speed : 800,
 	easing : 'swing',
 	sliding : false,
@@ -119,12 +125,12 @@ var parallax = {
 			check = false;
 			alert("ERROR:undefined key");
 		}
-		
+
 		if(typeof object !== 'object'){
 			check = false;
 			alert("ERROR:undefined page");
 		}
-		
+
 		if(check){
 			validKeyName = true;
 			for(propName in this){
@@ -145,7 +151,7 @@ var parallax = {
 		}
 		return this;
 	},
-	
+
 	fromUrl : function(){
 		var temp = document.URL.lastIndexOf("#")
 		if(temp !== -1){
@@ -155,7 +161,7 @@ var parallax = {
 			}
 		}
 	},
-	
+
 	slideBackground : function(newLocation){
 		if(typeof this.background !== 'undefined' && typeof newLocation !== 'undefined'){
 			$(this.background).animate({
