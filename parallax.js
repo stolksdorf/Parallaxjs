@@ -34,13 +34,13 @@ var parallaxPage = function(name, pageHtml){
 					}
 					this.slide({left:0,top:0}, function(){
 						thisPage.makeCurrent();
+						parallax.sliding = false;
 						if(typeof callback === 'function'){
 							callback();
 						}
 					});
 					if(typeof parallax.current !== 'undefined'){
-						parallax.current.slide(
-							locationOld,
+						parallax.current.slide( locationOld,
 							function(){
 								parallax.sliding = false;
 							}
