@@ -3,8 +3,8 @@ window.onload = function(){
 		alert("ERROR: parallax.js requires jQuery.");
 	} else {
 		var updateparallax = function(){
-			parallax.width = window.innerWidth;
-			parallax.height = window.innerHeight;
+			parallax.width = window.innerWidth || document.documentElement.clientWidth;
+			parallax.height = window.innerHeight || document.documentElement.clientHeight;
 		}
 		updateparallax();
 		$(window).resize(function(){updateparallax();});
