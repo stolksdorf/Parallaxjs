@@ -169,4 +169,8 @@ var parallax = {
 				}, parallax.speed, parallax.easing);
 		}
 	},
+
+    	getPage : function(key) {
+        	return this[key];
+    	}
 };
